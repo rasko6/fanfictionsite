@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('ageVerified') === 'true') {
         gate.style.display = 'none';
         mainContent.style.display = 'block';
-        return; 
+        return;
     }
 
     checkbox.addEventListener('change', function() {
@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
     enterBtn.addEventListener('click', function() {
         if (checkbox.checked) {
             localStorage.setItem('ageVerified', 'true');
-            
             gate.style.display = 'none';
             mainContent.style.display = 'block';
         }
