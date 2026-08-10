@@ -114,16 +114,17 @@ function renderWorks() {
     return;
   }
 
-  // sort
   filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
   worksList.innerHTML = filtered.map(work => `
-    <div class="work-card">
+    <div class="work-card" data-issue-id="${work.id}">
       <h2>${escapeHtml(work.title)}</h2>
       <div class="tags">${work.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join(' ')}</div>
       <div class="body">${escapeHtml(work.body).replace(/\n/g, '<br>')}</div>
       <div class="meta">Posted: ${new Date(work.created_at).toLocaleDateString()}</div>
       <a href="${work.url}" target="_blank">🔗 View on GitHub</a>
+      <button class="comments-toggle" onclick="toggleComments(${work.id}, this)">💬 Show Comments</button>
+      <div class="comments-container" style="display: none;"></div>
     </div>
   `).join('');
 }
@@ -134,6 +135,68 @@ function escapeHtml(text) {
   div.textContent = text;
   return div.innerHTML;
 }
+
+
+// --- FETCH AND DISPLAY GITHUB COMMENTS ---
+window.toggleComments = async function(issueId, button) {
+  const container = button.nextElementSibling; // the comments-container div
+
+  // If already open, just close it
+  if (container.style.display === 'block') {
+    container.style.display = 'none';
+    button.textContent = '💬 Show Comments';
+    return;
+  }
+
+  // Show the container and set loading state
+  container.style.display = 'block';
+  button.textContent = 'Loading...';
+  button.disabled = true;
+
+  // If we already loaded comments before, just show them
+  if (container.children.length > 0) {
+    button.textContent = '💬 Hide Comments';
+    button.disabled = false;
+    return;
+  }
+
+  try {
+    const url = `https://api.github.com/repos/${REPO}/issues/${issueId}/comments`;
+    const response = await fetch(url);
+
+    if (!response.ok) throw new Error('Failed to load comments');
+
+    const comments = await response.json();
+
+    if (comments.length === 0) {
+      container.innerHTML = '<p class="no-comments">No comments yet. Be the first!</p>';
+    } else {
+      let html = '';
+      comments.forEach(comment => {
+        html += `
+          <div class="comment">
+            <img src="${comment.user.avatar_url}" alt="avatar" class="comment-avatar">
+            <div class="comment-body">
+              <strong>${escapeHtml(comment.user.login)}</strong>
+              <span class="comment-date">${new Date(comment.created_at).toLocaleDateString()}</span>
+              <p>${escapeHtml(comment.body).replace(/\n/g, '<br>')}</p>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    button.textContent = '💬 Hide Comments';
+    button.disabled = false;
+
+  } catch (error) {
+    container.innerHTML = '<p class="error">⚠️ Could not load comments.</p>';
+    button.textContent = '💬 Show Comments';
+    button.disabled = false;
+    console.error('Comment error:', error);
+  }
+};
 
 // initialize
 loadWorks();
