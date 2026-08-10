@@ -6,13 +6,6 @@ You can refer to this as FFS for short.
 Use this link to access the website: 
 <a>rasko6.github.io/fanfictionsite/</a>
 
-# Work/issues template: 
+# Work/issues tutorial: 
 
-### Title:
-Title
-
-### Content:
-Story(you can use markdown)
-
-### Tags (add labels to this issue after creation):
-Tags
+The name of your issue is your work's name, use labels as tags. 
