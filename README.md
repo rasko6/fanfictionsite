@@ -6,6 +6,6 @@ You can refer to this as FFS for short.
 Use this link to access the website: 
 <a>rasko6.github.io/fanfictionsite/</a>
 
-# Work/issues tutorial: 
+# Work/issues notice: 
 
 The name of your issue is your work's name, use labels as tags. 
