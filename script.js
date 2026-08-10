@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const worksList = document.getElementById('works-list');
 const tagFilterContainer = document.getElementById('tag-filter');
+const REPO = 'https://github.com/rasko6/fanfictionsite';
 
 let allWorks = [];
 let selectedTags = new Set();
