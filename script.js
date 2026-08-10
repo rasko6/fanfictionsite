@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const enterBtn = document.getElementById('enter-btn');
 
     if (localStorage.getItem('ageVerified') === 'true') {
+        console.log("User verified age")
         gate.style.display = 'none';
         mainContent.style.display = 'block';
         return;
