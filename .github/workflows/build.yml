@@ -1,0 +1,39 @@
+name: Build Works JSON
+
+on:
+  issues:
+    types: [opened, edited, labeled, unlabeled, closed, reopened]
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:  
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: read
+      contents: write    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies (if any)
+        run: npm install @octokit/rest
+
+      - name: Generate works.json from issues
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/generate-works.js
+
+      - name: Commit and push works.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add works.json
+          git diff --staged --quiet || git commit -m "Update works.json [skip ci]"
+          git push
