@@ -1,3 +1,34 @@
+// verify age
+document.addEventListener('DOMContentLoaded', function() {
+    const gate = document.getElementById('age-gate');
+    const mainContent = document.getElementById('main-content');
+    const checkbox = document.getElementById('age-checkbox');
+    const enterBtn = document.getElementById('enter-btn');
+
+    if (localStorage.getItem('ageVerified') === 'true') {
+        gate.style.display = 'none';
+        mainContent.style.display = 'block';
+        return; 
+    }
+
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            enterBtn.classList.add('enabled');
+        } else {
+            enterBtn.classList.remove('enabled');
+        }
+    });
+
+    enterBtn.addEventListener('click', function() {
+        if (checkbox.checked) {
+            localStorage.setItem('ageVerified', 'true');
+            
+            gate.style.display = 'none';
+            mainContent.style.display = 'block';
+        }
+    });
+});
+
 const worksList = document.getElementById('works-list');
 const tagFilterContainer = document.getElementById('tag-filter');
 
