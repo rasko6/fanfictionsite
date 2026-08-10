@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "title": "Test Entry",
+    "body": "### Title:\nTest Entry\n\n### Content:\nStory\n",
+    "tags": [
+      "RATING: G"
+    ],
+    "created_at": "2026-08-10T11:13:01Z",
+    "updated_at": "2026-08-10T11:13:01Z",
+    "url": "https://github.com/rasko6/fanfictionsite/issues/1"
+  }
+]
