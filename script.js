@@ -162,7 +162,11 @@ window.toggleComments = async function(issueId, button) {
 
   try {
     const url = `https://api.github.com/repos/${REPO}/issues/${issueId}/comments`;
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': 'token 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' 
+      }
+    });
 
     if (!response.ok) throw new Error('Failed to load comments');
 
