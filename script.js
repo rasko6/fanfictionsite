@@ -1,4 +1,4 @@
-// verify age
+// verify age.
 document.addEventListener('DOMContentLoaded', function() {
     const gate = document.getElementById('age-gate');
     const mainContent = document.getElementById('main-content');
