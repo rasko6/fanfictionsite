@@ -2,7 +2,8 @@
 
 this repository is a static website for publishing your fanfiction works through the issues tab on github.
 
-Use this link to access the website: rasko6.github.io/fanfictionsite/
+Use this link to access the website: 
+<a>rasko6.github.io/fanfictionsite/</a>
 
 # Work/issues template: 
 
