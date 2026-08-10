@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": 2,
+    "title": "Test Issue [admin]",
+    "body": "there were some people and they kissed the end",
+    "tags": [
+      "Fluff",
+      "RATING: G"
+    ],
+    "created_at": "2026-08-10T11:55:08Z",
+    "updated_at": "2026-08-10T11:55:08Z",
+    "url": "https://github.com/rasko6/fanfictionsite/issues/2"
+  }
+]
