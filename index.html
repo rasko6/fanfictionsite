@@ -8,22 +8,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="age-gate">
+        <div class="age-box">
+            <h2>!!!Adult Content Warning!!!</h2>
+            <p>This archive contains mature, and potentially explicit content intended for <strong>adults only</strong>.</p>
+            <p>By entering, you confirm that you are <strong>18 years or older</strong>.</p>
+            
+            <div class="age-check">
+                <input type="checkbox" id="age-checkbox">
+                <label for="age-checkbox">I am 18 years of age or older.</label>
+            </div>
+            
+            <button id="enter-btn" disabled>Enter Site</button>
+            <p class="age-note">By clicking "Enter Site", you agree to our terms of service.</p>
+        </div>
+    </div>
 
-    <header>
-        <h1>FanFictionSite</h1>
-    </header>
+    <div id="main-content" style="display: none;">
+        <header>
+            <h1>FanFictionSite</h1>
+        </header>
 
-    <main>
-        <p>Welcome to FanFictionSite.</p>
-          <h2>Filter by tags:</h2>
-              <div id="tag-filter"></div>
-<div id="works-list"></div>
-  <p><a href="https://github.com/rasko6/fanfictionsite/issues/new" target="_blank">Submit a new work (create an issue)</a></p>
-    </main>
+        <main>
+            <p>Welcome to FanFictionSite.</p>
+            <h2>Filter by tags:</h2>
+            <div id="tag-filter"></div>
+            <div id="works-list"></div>
+            <p><a href="https://github.com/rasko6/fanfictionsite/issues/new" target="_blank">Submit a new work (create an issue)</a></p>
+        </main>
 
-    <footer>
-        <p>&copy; 2026 rasko6</p>
-    </footer>
+        <footer>
+            <p>&copy; 2026 rasko6</p>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
